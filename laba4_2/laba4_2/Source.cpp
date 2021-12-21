@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+int main() {
+
+	setlocale(LC_ALL, "ru");
+
+	// ввод размера, создание и вывод массива
+
+	cout << "введите количество строк массива: ";
+	int n, m;
+	cin >> n;
+	cout << "введите количество столбцов массива: ";
+	cin >> m;
+
+	int arr[50][50];
+
+	cout << endl << "исходные данные: " << endl;
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			arr[i][j] = rand() % 50;
+		}
+	}
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			cout << arr[i][j] <<"\t";
+			if (j == m - 1) { cout << endl; }
+		}
+	}
+
+	// поиск элементов выше главной диагонали
+
+	int min = arr[0][0];
+
+	for (int i = 0; i < n; i++) 
+	{
+		for (int j = m-1; j > i; j--)
+		{
+			if (arr[i][j] < min ) { min = arr[i][j]; }
+		}
+	}
+	
+	cout << endl << "минимальное значение выше главной диагонали: " << min << endl;
+
+	return 0;
+}
